@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ServiceStack.DataAnnotations;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +62,11 @@ namespace DownByWind.Entity
 	/// </summary>
 	public class Bar
 	{
+		[AutoIncrement]   
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]//添加时自动增长
+		public int Id { get; set; }
+
 		/// <summary>
 		/// 时间
 		/// </summary>
@@ -70,48 +78,53 @@ namespace DownByWind.Entity
 		public BarType BarType { get; set; }
 
 		/// <summary>
+		/// 万得代码
+		/// </summary>
+		public string WindCode { get; set; }
+
+		/// <summary>
 		/// 交易日
 		/// </summary>
 		public int TradingDay { get; set; }
 
-		/// <summary>
-		/// 开盘价
-		/// </summary>
-		public double O { get; set; }
+        /// <summary>
+        /// 开盘价
+        /// </summary>
+        public double? O { get; set; }
 
-		/// <summary>
-		/// 最高价
-		/// </summary>
-		public double H { get; set; }
+        /// <summary>
+        /// 最高价
+        /// </summary>		
+        public double? H { get; set; }
 
-		/// <summary>
-		/// 最低价
-		/// </summary>
-		public double L { get; set; }
+        /// <summary>
+        /// 最低价
+        /// </summary>
+        public double? L { get; set; }
 
-		/// <summary>
-		/// 收盘价
-		/// </summary>
-		public double C { get; set; }
+        /// <summary>
+        /// 收盘价
+        /// </summary>
+        public double? C { get; set; }
 
-		/// <summary>
-		/// 成交量
-		/// </summary>
-		public double V { get; set; }
+        /// <summary>
+        /// 成交量
+        /// </summary>
+        public double? V { get; set; }
 
-		/// <summary>
-		/// 持仓量
-		/// </summary>
-		public double I { get; set; }
+        /// <summary>
+        /// 持仓量
+        /// </summary>
+        public double? I { get; set; }
 
-		/// <summary>
-		/// 结算价
-		/// </summary>
-		public double Settle { get; set; }
+        /// <summary>
+        /// 结算价
+        /// </summary>
+        public double? Settle { get; set; }
 
         public override string ToString()
         {
-			return $"{D} Open:{O} Close:{C}";
+            return $"{D} Open:{O} Close:{C}";
         }
     }
 }
